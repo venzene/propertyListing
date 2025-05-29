@@ -1,0 +1,17 @@
+<%- include('../partials/header', { isAuthenticated: isAuthenticated }) %>
+
+<div class="container mt-5">
+  <h1 class="mb-4 text-center">Browse Properties</h1>
+
+  <div class="row">
+    <% properties.forEach(function(property) { %>
+      <% if (property) { %>
+        <div class="col-md-4 mb-4">
+          <%- include('../partials/propertyCard', { property: property }) %>
+        </div>
+      <% } %>
+    <% }) %>
+  </div>
+</div>
+
+<%- include('../partials/footer') %>

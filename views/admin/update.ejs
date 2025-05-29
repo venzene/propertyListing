@@ -1,0 +1,115 @@
+<%- include('../partials/header') %>
+
+<div class="container my-5">
+  <h2>Update Property</h2>
+  <form action="/admin/update/<%= property._id %>?_method=PUT" method="POST">
+
+    <div class="mb-3">
+      <label class="form-label">Title</label>
+      <input type="text" class="form-control" name="title" value="<%= property.title %>" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Type</label>
+      <select class="form-select" name="type" required>
+        <% ['Apartment', 'Bungalow', 'Villa', 'Studio', 'Penthouse'].forEach(option => { %>
+          <option value="<%= option %>" <%= property.type === option ? 'selected' : '' %>><%= option %></option>
+        <% }) %>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Price (₹)</label>
+      <input type="number" class="form-control" name="price" value="<%= property.price %>" required>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6 mb-3">
+        <label class="form-label">State</label>
+        <input type="text" class="form-control" name="state" value="<%= property.state %>" required>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label class="form-label">City</label>
+        <input type="text" class="form-control" name="city" value="<%= property.city %>" required>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-4 mb-3">
+        <label class="form-label">Area (sq.ft)</label>
+        <input type="number" class="form-control" name="areaSqFt" value="<%= property.areaSqFt %>" required>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label class="form-label">Bedrooms</label>
+        <input type="number" class="form-control" name="bedrooms" value="<%= property.bedrooms %>" required>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label class="form-label">Bathrooms</label>
+        <input type="number" class="form-control" name="bathrooms" value="<%= property.bathrooms %>" required>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Amenities (comma separated)</label>
+      <input type="text" class="form-control" name="amenities" value="<%= property.amenities.join(', ') %>">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Furnished</label>
+      <select class="form-select" name="furnished" required>
+        <% ['Furnished', 'Unfurnished', 'Semi'].forEach(option => { %>
+          <option value="<%= option %>" <%= property.furnished === option ? 'selected' : '' %>><%= option %></option>
+        <% }) %>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Available From</label>
+      <input type="date" class="form-control" name="availableFrom" value="<%= property.availableFrom.toISOString().split('T')[0] %>" required>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Listed By</label>
+      <select class="form-select" name="listedBy" required>
+        <% ['Owner', 'Builder', 'Agent'].forEach(option => { %>
+          <option value="<%= option %>" <%= property.listedBy === option ? 'selected' : '' %>><%= option %></option>
+        <% }) %>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Tags (comma separated)</label>
+      <input type="text" class="form-control" name="tags" value="<%= property.tags.join(', ') %>">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Color Theme</label>
+      <input type="text" class="form-control" name="colorTheme" value="<%= property.colorTheme %>">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Rating (0 to 5)</label>
+      <input type="number" step="0.1" class="form-control" name="rating" min="0" max="5" value="<%= property.rating %>">
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Is Verified</label>
+      <select class="form-select" name="isVerified">
+        <option value="true" <%= property.isVerified ? 'selected' : '' %>>Yes</option>
+        <option value="false" <%= !property.isVerified ? 'selected' : '' %>>No</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Listing Type</label>
+      <select class="form-select" name="listingType" required>
+        <option value="rent" <%= property.listingType === 'rent' ? 'selected' : '' %>>Rent</option>
+        <option value="sale" <%= property.listingType === 'sale' ? 'selected' : '' %>>Sale</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100">Update Property</button>
+  </form>
+</div>
+
+<%- include('../partials/footer') %>

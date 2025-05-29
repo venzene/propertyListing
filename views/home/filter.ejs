@@ -1,0 +1,108 @@
+<%- include('../partials/header', { isAuthenticated: isAuthenticated }) %>
+
+<div class="container mt-5">
+  <h1 class="text-center mb-4">Filter Properties</h1>
+  <form method="GET" action="/browse/filter">
+    <div class="row">
+      <div class="col-md-4 mb-3">
+        <label>Title</label>
+        <input type="text" name="title" class="form-control">
+      </div>
+      <div class="col-md-4 mb-3">
+        <label>Type</label>
+        <input type="text" name="type" class="form-control">
+      </div>
+      <div class="col-md-4 mb-3">
+        <label>Listing Type</label>
+        <select name="listingType" class="form-control">
+          <option value="">Any</option>
+          <option value="rent">Rent</option>
+          <option value="sale">Sale</option>
+        </select>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label>State</label>
+        <input type="text" name="state" class="form-control">
+      </div>
+      <div class="col-md-4 mb-3">
+        <label>City</label>
+        <input type="text" name="city" class="form-control">
+      </div>
+      <div class="col-md-4 mb-3">
+        <label>Furnished</label>
+        <select name="furnished" class="form-control">
+          <option value="">Any</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+      <div class="col-md-4 mb-3">
+        <label>Listed By</label>
+        <input type="text" name="listedBy" class="form-control">
+      </div>
+      <div class="col-md-4 mb-3">
+        <label>Min Price</label>
+        <input type="number" name="minPrice" class="form-control">
+      </div>
+      <div class="col-md-4 mb-3">
+        <label>Max Price</label>
+        <input type="number" name="maxPrice" class="form-control">
+      </div>
+      <div class="col-md-4 mb-3">
+        <label>Min Area (sq.ft)</label>
+        <input type="number" name="minArea" class="form-control">
+      </div>
+      <div class="col-md-4 mb-3">
+        <label>Max Area (sq.ft)</label>
+        <input type="number" name="maxArea" class="form-control">
+      </div>
+      <div class="col-md-4 mb-3">
+        <label>Min Bedrooms</label>
+        <input type="number" name="minBedrooms" class="form-control">
+      </div>
+      <div class="col-md-4 mb-3">
+        <label>Max Bedrooms</label>
+        <input type="number" name="maxBedrooms" class="form-control">
+      </div>
+      <div class="col-md-4 mb-3">
+        <label>Min Bathrooms</label>
+        <input type="number" name="minBathrooms" class="form-control">
+      </div>
+      <div class="col-md-4 mb-3">
+        <label>Max Bathrooms</label>
+        <input type="number" name="maxBathrooms" class="form-control">
+      </div>
+      <div class="col-md-4 mb-3">
+        <label>Available From</label>
+        <input type="date" name="availableFrom" class="form-control">
+      </div>
+      <div class="col-md-4 mb-3">
+        <label>Min Rating</label>
+        <input type="number" step="0.1" name="minRating" class="form-control">
+      </div>
+      <div class="col-md-4 mb-3">
+        <label>Max Rating</label>
+        <input type="number" step="0.1" name="maxRating" class="form-control">
+      </div>
+      <div class="col-md-4 mb-3">
+        <label>Verified</label>
+        <select name="isVerified" class="form-control">
+          <option value="">Any</option>
+          <option value="true">Yes</option>
+          <option value="false">No</option>
+        </select>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label>Amenities (comma separated)</label>
+        <input type="text" name="amenities" class="form-control">
+      </div>
+      <div class="col-md-6 mb-3">
+        <label>Tags (comma separated)</label>
+        <input type="text" name="tags" class="form-control">
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary mt-3">Apply Filters</button>
+  </form>
+</div>
+
+<%- include('../partials/footer') %>
