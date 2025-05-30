@@ -3,14 +3,29 @@ const Property = require('../models/property');
 // Get all properties
 exports.getAllProperties = async (req, res) => {
   try {
-    const properties = await Property.find().lean();  // Use lean for better EJS compatibility
-    res.render('home/home', { properties, isAuthenticated: req.isAuthenticated || false });
+    const page = parseInt(req.query.page) || 1;
+    const limit = 45;
+    const skip = (page - 1) * limit;
 
+    const [properties, totalCount] = await Promise.all([
+      Property.find().skip(skip).limit(limit).lean(),
+      Property.countDocuments()
+    ]);
+
+    const totalPages = Math.ceil(totalCount / limit);
+
+    res.render('home/home', {
+      properties,
+      currentPage: page,
+      totalPages,
+      isAuthenticated: req.isAuthenticated || false
+    });
   } catch (err) {
     console.error(err);
     res.status(500).send('Server error');
   }
 };
+
 
 // Get property by ID
 exports.getPropertyById = async (req, res) => {
