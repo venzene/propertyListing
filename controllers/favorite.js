@@ -58,7 +58,6 @@ exports.getFavorites = async (req, res) => {
         availableFrom: new Date(p.availableFrom)
       }));
 
-      console.log('Cache hit for favorites');
       return res.render('favourite/favourite', {
         favoriteProperties,
         isAuthenticated: req.isAuthenticated || false
