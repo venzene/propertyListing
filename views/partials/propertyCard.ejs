@@ -13,7 +13,8 @@
       <strong>Listed By:</strong> <%= property.listedBy %> <br/>
       <strong>Rating:</strong> <%= property.rating ? property.rating.toFixed(1) : 'No ratings' %> / 5 <br/>
       <strong>Verified:</strong> <%= property.isVerified ? 'Yes' : 'No' %> <br/>
-      <strong>Tags:</strong> <%= property.tags.join(', ') || 'None' %>
+      <strong>Tags:</strong> <%= property.tags.join(', ') || 'None' %> <br/>
+      <strong>Color:</strong> <%= property.colorTheme || 'Default' %> <br/>
     </p>
     <form action="/admin/add/<%= property._id %>" method="POST" class="mx-auto" style="max-width: 400px;">
       <button type="submit" class="btn btn-primary w-100">Add To Favorite</button>
