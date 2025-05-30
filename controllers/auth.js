@@ -31,7 +31,7 @@ exports.signup = async (req, res) => {
   const { email, password, confirmPassword } = req.body;
 
   if (password !== confirmPassword) {
-    return res.status(400).render('auth/register', {
+    return res.status(400).render('auth/signup', {
       path: '/signup',
       pageTitle: 'Signup',
       errorMessage: 'Passwords do not match',
@@ -43,7 +43,7 @@ exports.signup = async (req, res) => {
   try {
     const existingUser = await User.findOne({ email });
     if (existingUser) {
-      return res.status(409).render('auth/register', {
+      return res.status(409).render('auth/signup', {
         path: '/signup',
         pageTitle: 'Signup',
         errorMessage: 'User already exists!',
@@ -65,7 +65,7 @@ exports.signup = async (req, res) => {
     res.redirect('/auth/login');
   } catch (err) {
     console.error(err);
-    res.status(500).render('auth/register', {
+    res.status(500).render('auth/signup', {
       path: '/signup',
       pageTitle: 'Signup',
       errorMessage: 'Something went wrong. Please try again.',

@@ -15,10 +15,10 @@
       <strong>Verified:</strong> <%= property.isVerified ? 'Yes' : 'No' %> <br/>
       <strong>Tags:</strong> <%= property.tags.join(', ') || 'None' %>
     </p>
-    <form action="/admin/update/<%= property._id %>" method="POST" class="mx-auto" style="max-width: 400px;">
+    <form action="/admin/update/<%= property._id %>" method="GET" class="mx-auto" style="max-width: 400px;">
       <button type="submit" class="btn btn-primary w-100">Edit</button>
     </form>
-    <form action="/admin/delete/<%= property._id %>" method="POST" class="mx-auto" style="max-width: 400px;">
+    <form action="/admin/delete/<%= property._id %>?_method=DELETE" method="POST" class="mx-auto" style="max-width: 400px;">
       <button type="submit" class="btn btn-primary w-100">Delete</button>
     </form>
   </div>
